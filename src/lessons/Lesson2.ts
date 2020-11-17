@@ -2,8 +2,8 @@ import { ILesson } from "./ILesson";
 
 class Lesson2 implements ILesson {
 
-    getResult (): string {
-        return "bam na skapanata ma4 lesson 2"
+    getResult (input: string|number): string {
+        return `test lesson 2 input(${input})`
     }
 }
 

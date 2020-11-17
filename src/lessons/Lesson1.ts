@@ -11,7 +11,9 @@ const solution = (input: number): number => {
     // remove the last el anyway
     splitted.pop()
 
-    const occurrences = splitted.filter(i => ! (i === ''))
+    const occurrences = splitted
+                            .filter(i => ! (i === ''))
+                            .filter(i => i.length > 1)
     let sequenceLength = 0
 
     if (occurrences.length > 0) {
@@ -23,11 +25,9 @@ const solution = (input: number): number => {
 
 class Lesson1 implements ILesson {
 
-    getResult (): string|number {
-
-        //32 has zeroes, but hasn't 1 on the end
-        //1041 should return 5 (longest sequence)
-        return solution(9)
+    getResult (input: string|number): string|number {
+        const inputCatsed = typeof input === "number" ? input : parseInt(input, 10)
+        return solution(inputCatsed)
     }
 }
 

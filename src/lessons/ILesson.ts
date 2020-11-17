@@ -1,3 +1,3 @@
 export interface ILesson {
-    getResult(): string|number
+    getResult(input: string|number): string|number
 }

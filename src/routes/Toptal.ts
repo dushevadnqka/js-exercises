@@ -8,8 +8,12 @@ const router = Router();
 const { OK } = StatusCodes;
 const dict = new Map([['Lesson1', Lesson1], ['Lesson2', Lesson2]]);
 
-router.get('/lesson/:id', async (req: Request, res: Response) => {
+// 32 has zeroes, but hasn't 1 on the end
+// 1041 should return 5 (longest sequence)
+// 5 has 101 which is one zero
+router.get('/lesson/:id/:input', (req: Request, res: Response) => {
     const id = req.params.id
+    const input = req.params.input
 
     const lessonClass: string = 'Lesson' + id;
 
@@ -17,7 +21,7 @@ router.get('/lesson/:id', async (req: Request, res: Response) => {
     
     const instance: ILesson = match ? new (match)() : new Lesson1() // by default
 
-    return res.status(OK).json(instance.getResult());
+    return res.status(OK).json(instance.getResult(input));
 });
 
 export default router;
